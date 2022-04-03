@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>BY&#39;s Physics, Math &amp; Coding Note</title>
+    <link>https://by-debug.github.io/</link>
+    <description>Recent content on BY&#39;s Physics, Math &amp; Coding Note</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 03 Apr 2022 22:05:48 +0800</lastBuildDate><atom:link href="https://by-debug.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Newtonian_Mechanics</title>
+      <link>https://by-debug.github.io/posts/newtonian_mechanics/menu/</link>
+      <pubDate>Sun, 03 Apr 2022 22:05:48 +0800</pubDate>
+      
+      <guid>https://by-debug.github.io/posts/newtonian_mechanics/menu/</guid>
+      <description> 含阻力之自由落體公式推導  </description>
+    </item>
+    
+    <item>
+      <title>Lagrangian_Mechanics</title>
+      <link>https://by-debug.github.io/posts/lagrangian_mechanics/menu/</link>
+      <pubDate>Sun, 03 Apr 2022 22:04:18 +0800</pubDate>
+      
+      <guid>https://by-debug.github.io/posts/lagrangian_mechanics/menu/</guid>
+      <description> 最小作用量原理 變分法入門  </description>
+    </item>
+    
+    <item>
+      <title>含阻力之自由落體</title>
+      <link>https://by-debug.github.io/posts/newtonian_mechanics/freefall/</link>
+      <pubDate>Sun, 03 Apr 2022 18:41:10 +0800</pubDate>
+      
+      <guid>https://by-debug.github.io/posts/newtonian_mechanics/freefall/</guid>
+      <description>Question 1 試證明\[\tanh^{-1},\theta=\int_{0}^{\theta}\frac{dx}{1-x^2}\]
+Answer $$ \text{let},x=\tanh,t\newline \Rightarrow \frac{dx}{dt}=\frac{\cosh^2,t-\sinh^2,t}{\cosh^2,t}\ =1-\tanh^2,t\ =1-x^2\ \frac{dx}{1-x^2}=dt\ $$
+$$ \therefore \int\frac{dx}{1-x^2}=t+C\ =\tanh^{-1},x+C\ \Rightarrow \int_{0}^{\theta}\frac{dx}{1-x^2}=[\tanh^{-1},x]_0^\theta\ =\tanh^{-1},\theta $$
+Question 2 一個物體質量m，從空中自由落下，且其所受空氣阻力和其速率v的平方成正比。試求該物體下落速度之方程式。
+Answer 首先假設阻力\[f=kv^2\] 設速度向上為正 則物體之下落之微分方程可表示為
+$$ F=m\frac{dv}{dt}=kv^2-mg $$
+（因為是自由落體，因此阻力恆向上）
+$$ \frac{dv}{dt}=\frac{k}{m}v^2-g\ \Rightarrow \frac{dv}{\frac{k}{m}v^2-g}=dt $$
+令\[u=\sqrt{\frac{k}{mg}}v\] 則
+$$ \begin{align*} du&amp;amp;=\sqrt{\frac{k}{mg}}dv \Rightarrow &amp;amp;dv&amp;amp;=\sqrt{\frac{mg}{k}}du\ u^2&amp;amp;=\frac{k}{mg}v^2 \Rightarrow &amp;amp;gu^2&amp;amp;=\frac{k}{m}v^2 \end{align*} $$
+因此
+$$ \frac{\sqrt{\frac{mg}{k}}du}{gu^2-g}=dt\ $$
+$$ -\frac{\sqrt{\frac{mg}{k}}du}{g-gu^2}=dt\ $$
+$$ \sqrt{\frac{m}{kg}}\int \frac{du}{1-u^2}=-\int dt\ \tanh^{-1}u=-\sqrt{\frac{kg}{m}}t+C\ (\because v(0)=0\Rightarrow u(0)=0 \therefore C=0)\ $$
+$$ u=\tanh(-\sqrt{\frac{kg}{m}}t+C)\ (\because v(0)=0\Rightarrow u(0)=0 \therefore C=0)\ $$</description>
+    </item>
+    
+    <item>
+      <title>最小作用量原理</title>
+      <link>https://by-debug.github.io/posts/lagrangian_mechanics/least_action/</link>
+      <pubDate>Sun, 03 Apr 2022 20:46:03 +0800</pubDate>
+      
+      <guid>https://by-debug.github.io/posts/lagrangian_mechanics/least_action/</guid>
+      <description>作用量(action)定義  拉格朗日量 $$ L(t,\dot{x},x) =T-V $$ $$ \text{其中 }T \text{ 是動能，}V\text{ 是位能} $$ 作用量 $$ S=\int L(t,\dot{x},x),dt $$  最小作用量原理(The Principle of Least Action) 敘述：
+ 當一個粒子在場中運動時，所經過的軌跡會使得作用量在所有路徑中為最小值。
+ 此敘述等價於
+$$ \delta S = 0 $$
+。
+可以證明，在只有保守力作用的情況下，最小作用量原理和牛頓第二運動定律是等價的。
+證明 $$ \because \delta S = 0 $$
+$$ \Rightarrow \frac{\partial L}{\partial x}-\frac{d}{dt}\frac{\partial L}{\partial \dot{x}}=0\text{(Euler-Lagrange equation)} $$ $$ -\frac{\partial V}{\partial x}-\frac{d}{dt}\frac{\partial T}{\partial \dot{x}}=0 $$ $$ -\frac{\partial V}{\partial x}=\frac{d}{dt}\frac{\partial}{\partial \dot{x}}(\frac{1}{2}m\dot{x}^2) $$ $$ -\frac{\partial V}{\partial x}=\frac{d}{dt}(m\dot{x}) $$ 在僅有保守力作用的情形之下， $$ F=\frac{d}{dt}p $$ 得證。</description>
+    </item>
+    
+    <item>
+      <title>變分法入門</title>
+      <link>https://by-debug.github.io/posts/lagrangian_mechanics/variational_principle/</link>
+      <pubDate>Sun, 03 Apr 2022 18:42:09 +0800</pubDate>
+      
+      <guid>https://by-debug.github.io/posts/lagrangian_mechanics/variational_principle/</guid>
+      <description>Euler-Lagrange equation Question: 假設路徑\[y=f(x)\]，從\[(x_1,f(x_1))\]到\[(x_2,f(x_2))\]，試求\[f(x)\]之微分方程，使\[H(y&amp;rsquo;,y,x)=\int_{x_1}^{x_2}F(y&amp;rsquo;,y,x),dx\]有最小值。
+Answer: p.s. 此非正規證明，僅是一個簡易推導 因為要求$H$有最小值，因此對於任意微小偏移量\[\eta(x)\]（\[\because\]所有路徑皆必須有相同起始點和終點，\[\therefore \eta(x_1)=0\]且\[\eta(x_2)=0\]），\[H\]之變化量（稱為\[H\]的變分\[\delta H\]）應為0。
+$$ \delta H=\int_{x_1}^{x_2}F((y+\eta)&amp;rsquo;,y+\eta,x)-F(y&amp;rsquo;,y,x),dx\ $$
+$$ =\int_{x_1}^{x_2}F(y&amp;rsquo;+\eta&amp;rsquo;,y+\eta,x)-F(y&amp;rsquo;,y,x),dx\ $$
+$$ =\int_{x_1}^{x_2}\frac{\partial F}{\partial y}\eta+ $$
+$$ \frac{\partial F}{\partial y&amp;rsquo;}\eta&amp;rsquo;,dx\ $$
+$$ =\int_{x_1}^{x_2}\frac{\partial F}{\partial y}\eta ,dx $$
+$$ +[\frac{\partial F}{\partial y&amp;rsquo;}\eta]_{x_1}^{x_2} $$
+$$ -\int_{x_1}^{x_2}\frac{d}{dx}\frac{\partial F}{\partial y&amp;rsquo;}\eta,dx\ $$
+$$ =\int_{x_1}^{x_2}(\frac{\partial F}{\partial y} $$
+$$ -\frac{d}{dx}\frac{\partial F}{\partial y&amp;rsquo;})\eta,dx $$
+\[\because\]我們要求\[y=f(x)\]使得\[H(y&amp;rsquo;,y,x)\]有最小值
+$$ \therefore \forall \eta,\delta H=0\ $$
+$$ \Rightarrow \frac{\partial F}{\partial y} -\frac{d}{dx}\frac{\partial F}{\partial y&amp;rsquo;}=0 $$ 此式稱為歐拉─拉格朗日方程式（Euler-Lagrange equation）。</description>
+    </item>
+    
+  </channel>
+</rss>

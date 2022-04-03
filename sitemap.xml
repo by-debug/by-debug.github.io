@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://by-debug.github.io/posts/newtonian_mechanics/menu/</loc>
+    <lastmod>2022-04-03T22:05:48+08:00</lastmod>
+  </url><url>
+    <loc>https://by-debug.github.io/posts/lagrangian_mechanics/menu/</loc>
+    <lastmod>2022-04-03T22:04:18+08:00</lastmod>
+  </url><url>
+    <loc>https://by-debug.github.io/posts/newtonian_mechanics/freefall/</loc>
+    <lastmod>2022-04-03T18:41:10+08:00</lastmod>
+  </url><url>
+    <loc>https://by-debug.github.io/posts/lagrangian_mechanics/least_action/</loc>
+    <lastmod>2022-04-03T20:46:03+08:00</lastmod>
+  </url><url>
+    <loc>https://by-debug.github.io/posts/lagrangian_mechanics/variational_principle/</loc>
+    <lastmod>2022-04-03T18:42:09+08:00</lastmod>
+  </url><url>
+    <loc>https://by-debug.github.io/</loc>
+    <lastmod>2022-04-03T22:05:48+08:00</lastmod>
+  </url><url>
+    <loc>https://by-debug.github.io/posts/</loc>
+    <lastmod>2022-04-03T22:05:48+08:00</lastmod>
+  </url><url>
+    <loc>https://by-debug.github.io/categories/</loc>
+  </url><url>
+    <loc>https://by-debug.github.io/tags/</loc>
+  </url>
+</urlset>

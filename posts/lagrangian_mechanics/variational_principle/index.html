@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>變分法入門 | BY&#39;s Physics, Math &amp; Coding Note</title>
+<meta name="keywords" content="">
+<meta name="description" content="Euler-Lagrange equation Question: 假設路徑\[y=f(x)\]，從\[(x_1,f(x_1))\]到\[(x_2,f(x_2))\]，試求\[f(x)\]之微分方程，使\[H(y&rsquo;,y,x)=\int_{x_1}^{x_2}F(y&rsquo;,y,x),dx\]有最小值。
+Answer: p.s. 此非正規證明，僅是一個簡易推導 因為要求$H$有最小值，因此對於任意微小偏移量\[\eta(x)\]（\[\because\]所有路徑皆必須有相同起始點和終點，\[\therefore \eta(x_1)=0\]且\[\eta(x_2)=0\]），\[H\]之變化量（稱為\[H\]的變分\[\delta H\]）應為0。
+$$ \delta H=\int_{x_1}^{x_2}F((y&#43;\eta)&rsquo;,y&#43;\eta,x)-F(y&rsquo;,y,x),dx\ $$
+$$ =\int_{x_1}^{x_2}F(y&rsquo;&#43;\eta&rsquo;,y&#43;\eta,x)-F(y&rsquo;,y,x),dx\ $$
+$$ =\int_{x_1}^{x_2}\frac{\partial F}{\partial y}\eta&#43; $$
+$$ \frac{\partial F}{\partial y&rsquo;}\eta&rsquo;,dx\ $$
+$$ =\int_{x_1}^{x_2}\frac{\partial F}{\partial y}\eta ,dx $$
+$$ &#43;[\frac{\partial F}{\partial y&rsquo;}\eta]_{x_1}^{x_2} $$
+$$ -\int_{x_1}^{x_2}\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;}\eta,dx\ $$
+$$ =\int_{x_1}^{x_2}(\frac{\partial F}{\partial y} $$
+$$ -\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;})\eta,dx $$
+\[\because\]我們要求\[y=f(x)\]使得\[H(y&rsquo;,y,x)\]有最小值
+$$ \therefore \forall \eta,\delta H=0\ $$
+$$ \Rightarrow \frac{\partial F}{\partial y} -\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;}=0 $$ 此式稱為歐拉─拉格朗日方程式（Euler-Lagrange equation）。">
+<meta name="author" content="by-debug">
+<link rel="canonical" href="https://by-debug.github.io/posts/lagrangian_mechanics/variational_principle/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.48a18943c2fc15c38a372b8dde1f5e5dc0bc64fa6cb90f5a817d2f8c76b7f3ae.css" integrity="sha256-SKGJQ8L8FcOKNyuN3h9eXcC8ZPpsuQ9agX0vjHa3864=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://by-debug.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://by-debug.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://by-debug.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://by-debug.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://by-debug.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="變分法入門" />
+<meta property="og:description" content="Euler-Lagrange equation Question: 假設路徑\[y=f(x)\]，從\[(x_1,f(x_1))\]到\[(x_2,f(x_2))\]，試求\[f(x)\]之微分方程，使\[H(y&rsquo;,y,x)=\int_{x_1}^{x_2}F(y&rsquo;,y,x),dx\]有最小值。
+Answer: p.s. 此非正規證明，僅是一個簡易推導 因為要求$H$有最小值，因此對於任意微小偏移量\[\eta(x)\]（\[\because\]所有路徑皆必須有相同起始點和終點，\[\therefore \eta(x_1)=0\]且\[\eta(x_2)=0\]），\[H\]之變化量（稱為\[H\]的變分\[\delta H\]）應為0。
+$$ \delta H=\int_{x_1}^{x_2}F((y&#43;\eta)&rsquo;,y&#43;\eta,x)-F(y&rsquo;,y,x),dx\ $$
+$$ =\int_{x_1}^{x_2}F(y&rsquo;&#43;\eta&rsquo;,y&#43;\eta,x)-F(y&rsquo;,y,x),dx\ $$
+$$ =\int_{x_1}^{x_2}\frac{\partial F}{\partial y}\eta&#43; $$
+$$ \frac{\partial F}{\partial y&rsquo;}\eta&rsquo;,dx\ $$
+$$ =\int_{x_1}^{x_2}\frac{\partial F}{\partial y}\eta ,dx $$
+$$ &#43;[\frac{\partial F}{\partial y&rsquo;}\eta]_{x_1}^{x_2} $$
+$$ -\int_{x_1}^{x_2}\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;}\eta,dx\ $$
+$$ =\int_{x_1}^{x_2}(\frac{\partial F}{\partial y} $$
+$$ -\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;})\eta,dx $$
+\[\because\]我們要求\[y=f(x)\]使得\[H(y&rsquo;,y,x)\]有最小值
+$$ \therefore \forall \eta,\delta H=0\ $$
+$$ \Rightarrow \frac{\partial F}{\partial y} -\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;}=0 $$ 此式稱為歐拉─拉格朗日方程式（Euler-Lagrange equation）。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://by-debug.github.io/posts/lagrangian_mechanics/variational_principle/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-03T18:42:09&#43;08:00" />
+<meta property="article:modified_time" content="2022-04-03T18:42:09&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="變分法入門"/>
+<meta name="twitter:description" content="Euler-Lagrange equation Question: 假設路徑\[y=f(x)\]，從\[(x_1,f(x_1))\]到\[(x_2,f(x_2))\]，試求\[f(x)\]之微分方程，使\[H(y&rsquo;,y,x)=\int_{x_1}^{x_2}F(y&rsquo;,y,x),dx\]有最小值。
+Answer: p.s. 此非正規證明，僅是一個簡易推導 因為要求$H$有最小值，因此對於任意微小偏移量\[\eta(x)\]（\[\because\]所有路徑皆必須有相同起始點和終點，\[\therefore \eta(x_1)=0\]且\[\eta(x_2)=0\]），\[H\]之變化量（稱為\[H\]的變分\[\delta H\]）應為0。
+$$ \delta H=\int_{x_1}^{x_2}F((y&#43;\eta)&rsquo;,y&#43;\eta,x)-F(y&rsquo;,y,x),dx\ $$
+$$ =\int_{x_1}^{x_2}F(y&rsquo;&#43;\eta&rsquo;,y&#43;\eta,x)-F(y&rsquo;,y,x),dx\ $$
+$$ =\int_{x_1}^{x_2}\frac{\partial F}{\partial y}\eta&#43; $$
+$$ \frac{\partial F}{\partial y&rsquo;}\eta&rsquo;,dx\ $$
+$$ =\int_{x_1}^{x_2}\frac{\partial F}{\partial y}\eta ,dx $$
+$$ &#43;[\frac{\partial F}{\partial y&rsquo;}\eta]_{x_1}^{x_2} $$
+$$ -\int_{x_1}^{x_2}\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;}\eta,dx\ $$
+$$ =\int_{x_1}^{x_2}(\frac{\partial F}{\partial y} $$
+$$ -\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;})\eta,dx $$
+\[\because\]我們要求\[y=f(x)\]使得\[H(y&rsquo;,y,x)\]有最小值
+$$ \therefore \forall \eta,\delta H=0\ $$
+$$ \Rightarrow \frac{\partial F}{\partial y} -\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;}=0 $$ 此式稱為歐拉─拉格朗日方程式（Euler-Lagrange equation）。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://by-debug.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "變分法入門",
+      "item": "https://by-debug.github.io/posts/lagrangian_mechanics/variational_principle/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "變分法入門",
+  "name": "變分法入門",
+  "description": "Euler-Lagrange equation Question: 假設路徑\\[y=f(x)\\]，從\\[(x_1,f(x_1))\\]到\\[(x_2,f(x_2))\\]，試求\\[f(x)\\]之微分方程，使\\[H(y\u0026rsquo;,y,x)=\\int_{x_1}^{x_2}F(y\u0026rsquo;,y,x),dx\\]有最小值。\nAnswer: p.s. 此非正規證明，僅是一個簡易推導 因為要求$H$有最小值，因此對於任意微小偏移量\\[\\eta(x)\\]（\\[\\because\\]所有路徑皆必須有相同起始點和終點，\\[\\therefore \\eta(x_1)=0\\]且\\[\\eta(x_2)=0\\]），\\[H\\]之變化量（稱為\\[H\\]的變分\\[\\delta H\\]）應為0。\n$$ \\delta H=\\int_{x_1}^{x_2}F((y+\\eta)\u0026rsquo;,y+\\eta,x)-F(y\u0026rsquo;,y,x),dx\\ $$\n$$ =\\int_{x_1}^{x_2}F(y\u0026rsquo;+\\eta\u0026rsquo;,y+\\eta,x)-F(y\u0026rsquo;,y,x),dx\\ $$\n$$ =\\int_{x_1}^{x_2}\\frac{\\partial F}{\\partial y}\\eta+ $$\n$$ \\frac{\\partial F}{\\partial y\u0026rsquo;}\\eta\u0026rsquo;,dx\\ $$\n$$ =\\int_{x_1}^{x_2}\\frac{\\partial F}{\\partial y}\\eta ,dx $$\n$$ +[\\frac{\\partial F}{\\partial y\u0026rsquo;}\\eta]_{x_1}^{x_2} $$\n$$ -\\int_{x_1}^{x_2}\\frac{d}{dx}\\frac{\\partial F}{\\partial y\u0026rsquo;}\\eta,dx\\ $$\n$$ =\\int_{x_1}^{x_2}(\\frac{\\partial F}{\\partial y} $$\n$$ -\\frac{d}{dx}\\frac{\\partial F}{\\partial y\u0026rsquo;})\\eta,dx $$\n\\[\\because\\]我們要求\\[y=f(x)\\]使得\\[H(y\u0026rsquo;,y,x)\\]有最小值\n$$ \\therefore \\forall \\eta,\\delta H=0\\ $$\n$$ \\Rightarrow \\frac{\\partial F}{\\partial y} -\\frac{d}{dx}\\frac{\\partial F}{\\partial y\u0026rsquo;}=0 $$ 此式稱為歐拉─拉格朗日方程式（Euler-Lagrange equation）。",
+  "keywords": [
+    
+  ],
+  "articleBody": "Euler-Lagrange equation Question: 假設路徑\\[y=f(x)\\]，從\\[(x_1,f(x_1))\\]到\\[(x_2,f(x_2))\\]，試求\\[f(x)\\]之微分方程，使\\[H(y’,y,x)=\\int_{x_1}^{x_2}F(y’,y,x),dx\\]有最小值。\nAnswer: p.s. 此非正規證明，僅是一個簡易推導 因為要求$H$有最小值，因此對於任意微小偏移量\\[\\eta(x)\\]（\\[\\because\\]所有路徑皆必須有相同起始點和終點，\\[\\therefore \\eta(x_1)=0\\]且\\[\\eta(x_2)=0\\]），\\[H\\]之變化量（稱為\\[H\\]的變分\\[\\delta H\\]）應為0。\n$$ \\delta H=\\int_{x_1}^{x_2}F((y+\\eta)’,y+\\eta,x)-F(y’,y,x),dx\\ $$\n$$ =\\int_{x_1}^{x_2}F(y’+\\eta’,y+\\eta,x)-F(y’,y,x),dx\\ $$\n$$ =\\int_{x_1}^{x_2}\\frac{\\partial F}{\\partial y}\\eta+ $$\n$$ \\frac{\\partial F}{\\partial y’}\\eta’,dx\\ $$\n$$ =\\int_{x_1}^{x_2}\\frac{\\partial F}{\\partial y}\\eta ,dx $$\n$$ +[\\frac{\\partial F}{\\partial y’}\\eta]_{x_1}^{x_2} $$\n$$ -\\int_{x_1}^{x_2}\\frac{d}{dx}\\frac{\\partial F}{\\partial y’}\\eta,dx\\ $$\n$$ =\\int_{x_1}^{x_2}(\\frac{\\partial F}{\\partial y} $$\n$$ -\\frac{d}{dx}\\frac{\\partial F}{\\partial y’})\\eta,dx $$\n\\[\\because\\]我們要求\\[y=f(x)\\]使得\\[H(y’,y,x)\\]有最小值\n$$ \\therefore \\forall \\eta,\\delta H=0\\ $$\n$$ \\Rightarrow \\frac{\\partial F}{\\partial y} -\\frac{d}{dx}\\frac{\\partial F}{\\partial y’}=0 $$ 此式稱為歐拉─拉格朗日方程式（Euler-Lagrange equation）。\nReference  Feynman’s Lecture on Physics:Volume II Chapter 19  ",
+  "wordCount" : "79",
+  "inLanguage": "en",
+  "datePublished": "2022-04-03T18:42:09+08:00",
+  "dateModified": "2022-04-03T18:42:09+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "by-debug"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://by-debug.github.io/posts/lagrangian_mechanics/variational_principle/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BY's Physics, Math \u0026 Coding Note",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://by-debug.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://by-debug.github.io/" accesskey="h" title="BY&#39;s Physics, Math &amp; Coding Note (Alt + H)">BY&#39;s Physics, Math &amp; Coding Note</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://by-debug.github.io/posts/lagrangian_mechanics/menu/" title="Lagrangian Mechanics">
+                    <span>Lagrangian Mechanics</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://by-debug.github.io/posts/newtonian_mechanics/menu/" title="Newtonian Mechanics">
+                    <span>Newtonian Mechanics</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      變分法入門
+    </h1>
+    <div class="post-meta"><span title='2022-04-03 18:42:09 +0800 CST'>April 3, 2022</span>&nbsp;·&nbsp;by-debug
+
+</div>
+  </header> 
+  <div class="post-content"><h4 id="euler-lagrange-equation">Euler-Lagrange equation<a hidden class="anchor" aria-hidden="true" href="#euler-lagrange-equation">#</a></h4>
+<h4 id="question">Question:<a hidden class="anchor" aria-hidden="true" href="#question">#</a></h4>
+<p>假設路徑\[y=f(x)\]，從\[(x_1,f(x_1))\]到\[(x_2,f(x_2))\]，試求\[f(x)\]之微分方程，使\[H(y&rsquo;,y,x)=\int_{x_1}^{x_2}F(y&rsquo;,y,x),dx\]有最小值。</p>
+<h5 id="answer">Answer:<a hidden class="anchor" aria-hidden="true" href="#answer">#</a></h5>
+<p>p.s. 此非正規證明，僅是一個簡易推導
+因為要求$H$有最小值，因此對於任意微小偏移量\[\eta(x)\]（\[\because\]所有路徑皆必須有相同起始點和終點，\[\therefore \eta(x_1)=0\]且\[\eta(x_2)=0\]），\[H\]之變化量（稱為\[H\]的變分\[\delta H\]）應為0。</p>
+<p>$$
+\delta H=\int_{x_1}^{x_2}F((y+\eta)&rsquo;,y+\eta,x)-F(y&rsquo;,y,x),dx\
+$$</p>
+<p>$$
+=\int_{x_1}^{x_2}F(y&rsquo;+\eta&rsquo;,y+\eta,x)-F(y&rsquo;,y,x),dx\
+$$</p>
+<p>$$
+=\int_{x_1}^{x_2}\frac{\partial F}{\partial y}\eta+
+$$</p>
+<p>$$
+\frac{\partial F}{\partial y&rsquo;}\eta&rsquo;,dx\
+$$</p>
+<p>$$
+=\int_{x_1}^{x_2}\frac{\partial F}{\partial y}\eta ,dx
+$$</p>
+<p>$$
++[\frac{\partial F}{\partial y&rsquo;}\eta]_{x_1}^{x_2}
+$$</p>
+<p>$$
+-\int_{x_1}^{x_2}\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;}\eta,dx\
+$$</p>
+<p>$$
+=\int_{x_1}^{x_2}(\frac{\partial F}{\partial y}
+$$</p>
+<p>$$
+-\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;})\eta,dx
+$$</p>
+<p>\[\because\]我們要求\[y=f(x)\]使得\[H(y&rsquo;,y,x)\]有最小值</p>
+<p>$$
+\therefore \forall \eta,\delta H=0\
+$$</p>
+<p>$$
+\Rightarrow \frac{\partial F}{\partial y}
+-\frac{d}{dx}\frac{\partial F}{\partial y&rsquo;}=0
+$$
+此式稱為歐拉─拉格朗日方程式（Euler-Lagrange equation）。</p>
+<h4 id="reference">Reference<a hidden class="anchor" aria-hidden="true" href="#reference">#</a></h4>
+<ol>
+<li><a href="https://www.feynmanlectures.caltech.edu/II_19.html">Feynman&rsquo;s Lecture on Physics:Volume II Chapter 19</a></li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://by-debug.github.io/">BY&#39;s Physics, Math &amp; Coding Note</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></body>
+
+</html>
