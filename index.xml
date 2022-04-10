@@ -6,7 +6,7 @@
     <description>Recent content on BY&#39;s Physics, Math &amp; Coding Note</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 03 Apr 2022 22:05:48 +0800</lastBuildDate><atom:link href="https://by-debug.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Apr 2022 19:31:44 +0800</lastBuildDate><atom:link href="https://by-debug.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Newtonian_Mechanics</title>
       <link>https://by-debug.github.io/posts/newtonian_mechanics/menu/</link>
@@ -89,6 +89,21 @@ $$ =\int_{x_1}^{x_2}(\frac{\partial F}{\partial y} -\frac{d}{dx}\frac{\partial F
 \[\because\text{我們要求}y=f(x)\text{使得}H(y&amp;rsquo;,y,x)\text{有最小值}\]
 $$ \therefore \forall \eta,\delta H=0\ $$
 $$ \Rightarrow \frac{\partial F}{\partial y} -\frac{d}{dx}\frac{\partial F}{\partial y&amp;rsquo;}=0 $$ 此式稱為歐拉─拉格朗日方程式（Euler-Lagrange equation）。</description>
+    </item>
+    
+    <item>
+      <title>Zerojudge d788: 排名順序</title>
+      <link>https://by-debug.github.io/posts/algorithm/zj-d788/</link>
+      <pubDate>Sun, 10 Apr 2022 19:31:44 +0800</pubDate>
+      
+      <guid>https://by-debug.github.io/posts/algorithm/zj-d788/</guid>
+      <description>原題連結
+題目敘述 考試成績出爐了 , 大家開始討論自己的分數高低 一個接著一個參與討論 , 新加入的那個人 , 想要知道自己目前排名是多少 但是太多人了 , 導致沒辦法一時得到他的排名 大家開始請求小光這個答案 , 不過小光非常討厭排名 , 一點都不想幫忙 現在就交給你了
+輸入說明 每組輸入的第一行有一個數字 $N$ ( $1\leq N\leq 10,0000$ ) 代表接下來會有$N$個人陸續與討論，接下來會有$N$行， 代表接下來陸續加入的人的成績$M$，($1\leq M\leq N$) 而且每個人的成績都不會重複
+輸出說明 對於已經知道的成績，請陸續對每個加入的輸出他的排名
+解題方法 解法一：線段樹 (這)
+先建立一棵線段樹，將人依照並用編號代表成績，並設定排名初始值為0。接著依照讀取順序，每讀入一筆數據$q$，就將線段$[1,q]$的排名值$+1$，代表排序在他後面的人排名全部往上後$1$名。接著查詢範圍$[q,q]$，結果就是當時的排名。
+圖解（使用範例測資）  設定  讀入第一筆數據(1)  讀入第二筆數據(5)  以此類推  AC Code #include &amp;lt;iostream&amp;gt; #include &amp;lt;cstring&amp;gt; #include &amp;lt;algorithm&amp;gt; #include &amp;lt;iomanip&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;stack&amp;gt; #include &amp;lt;queue&amp;gt; #include &amp;lt;map&amp;gt; using namespace std; #define int long long #define ld long double #ifdef ONLINE_JUDGE #define settings() ios::sync_with_stdio(0);cin.</description>
     </item>
     
   </channel>
