@@ -251,10 +251,10 @@ $$ \Rightarrow \frac{\partial F}{\partial y} -\frac{d}{dx}\frac{\partial F}{\par
   <section class="entry-content">
     <p>原題連結
 題目敘述 考試成績出爐了 , 大家開始討論自己的分數高低 一個接著一個參與討論 , 新加入的那個人 , 想要知道自己目前排名是多少 但是太多人了 , 導致沒辦法一時得到他的排名 大家開始請求小光這個答案 , 不過小光非常討厭排名 , 一點都不想幫忙 現在就交給你了
-輸入說明 每組輸入的第一行有一個數字 $N$ ( $1\leq N\leq 10,0000$ ) 代表接下來會有$N$個人陸續與討論，接下來會有$N$行， 代表接下來陸續加入的人的成績$M$，($1\leq M\leq N$) 而且每個人的成績都不會重複
+輸入說明 每組輸入的第一行有一個數字 \[N \text{(} 1\leq N\leq 10,0000$ \text{)}\] 代表接下來會有N個人陸續與討論，接下來會有N行， 代表接下來陸續加入的人的成績\[M\text{，(} 1\leq M\leq N\text{)}\] 而且每個人的成績都不會重複
 輸出說明 對於已經知道的成績，請陸續對每個加入的輸出他的排名
 解題方法 解法一：線段樹 (這)
-先建立一棵線段樹，將人依照並用編號代表成績，並設定排名初始值為0。接著依照讀取順序，每讀入一筆數據$q$，就將線段$[1,q]$的排名值$&#43;1$，代表排序在他後面的人排名全部往上後$1$名。接著查詢範圍$[q,q]$，結果就是當時的排名。
+先建立一棵線段樹，將人依照並用編號代表成績，並設定排名初始值為0。接著依照讀取順序，每讀入一筆數據q，就將線段\[ [1,q] \]的排名值&#43;1，代表排序在他後面的人排名全部往上後1名。接著查詢範圍\[ [q,q] \]，結果就是當時的排名。
 圖解（使用範例測資）  設定  讀入第一筆數據(1)  讀入第二筆數據(5)  以此類推  AC Code #include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;algorithm&gt; #include &lt;iomanip&gt; #include &lt;vector&gt; #include &lt;stack&gt; #include &lt;queue&gt; #include &lt;map&gt; using namespace std; #define int long long #define ld long double #ifdef ONLINE_JUDGE #define settings() ios::sync_with_stdio(0);cin....</p>
   </section>
   <footer class="entry-footer"><span title='2022-04-10 19:31:44 +0800 CST'>April 10, 2022</span>&nbsp;·&nbsp;by-debug</footer>
